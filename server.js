@@ -11,6 +11,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ✅ Tambahkan ini agar Railway tahu server aktif
+app.get("/", (req, res) => {
+  res.send("🚀 Backend aktif di Railway");
+});
+
 app.use("/api/admin", adminRoutes);
 app.use("/api/customers", customerRoutes);
 

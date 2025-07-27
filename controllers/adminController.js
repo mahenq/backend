@@ -1,3 +1,4 @@
+// backend/controllers/adminController.js
 const db = require("../models/db");
 const jwt = require("jsonwebtoken");
 
@@ -29,5 +30,15 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ error: "Gagal login admin" });
+  }
+};
+
+exports.getAllAdmins = async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM admins ORDER BY id ASC");
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.error("Gagal ambil admin", error.message);
+    res.status(500).json({ error: "Gagal ambil data admin" });
   }
 };

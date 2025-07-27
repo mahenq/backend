@@ -1,3 +1,4 @@
+// backend/models/db.js
 const { Pool } = require("pg");
 require("dotenv").config();
 
@@ -7,6 +8,9 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: parseInt(process.env.DB_PORT, 10),
+  ssl: {
+    rejectUnauthorized: false, // ✅ Penting untuk koneksi Railway
+  },
 });
 
 pool.on("connect", () => {
