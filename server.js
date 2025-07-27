@@ -15,6 +15,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("🚀 Backend aktif di Railway");
 });
+app.get("/ping", (req, res) => res.json({ ping: "pong", time: Date.now() }));
 
 app.use("/api/admin", adminRoutes);
 app.use("/api/customers", customerRoutes);
