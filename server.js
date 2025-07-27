@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 app.get("/ping", (req, res) => res.json({ ping: "pong", time: Date.now() }));
 
-app.use("/api/admin", adminRoutes);
+app.use("/api/admins", adminRoutes);
 app.use("/api/customers", customerRoutes);
 
 const PORT = process.env.PORT || 5000;
